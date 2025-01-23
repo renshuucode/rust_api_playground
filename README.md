@@ -8,3 +8,6 @@
 
 - Provide a practice-driven learning platform for Rust beginners.
 
+## Modules
+
+- [File System (`std::fs`)](docs/fs.md)
