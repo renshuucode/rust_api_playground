@@ -1,6 +1,6 @@
 use std::fs;
 use std::io;
-
+use std::path::Path;
 // 读取文件内容
 pub fn read_file(path: &str) -> io::Result<String> {
     let content = fs::read_to_string(path)?;
@@ -21,6 +21,10 @@ pub fn get_metadata(path: &str) -> io::Result<()> {
     println!("File size: {} bytes", metadata.len());
     println!("Is directory: {}", metadata.is_dir());
     Ok(())
+}
+
+pub fn exists(path: &str) -> bool {
+    Path::new(path).exists()
 }
 
 // 测试模块
@@ -79,5 +83,11 @@ mod tests {
         // 清理临时文件
         fs::remove_file(test_path)?;
         Ok(())
+    }
+
+    #[test]
+    fn test_exists() {
+        let path = "test_files/hello.txt";
+        assert!(exists(path));
     }
 }
