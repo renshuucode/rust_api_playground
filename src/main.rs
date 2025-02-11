@@ -1,5 +1,4 @@
-use std::io::{self};
-use std::fs;
+
 
 // fn read_file_content(path: &str) -> io::Result<String> {
 //     let mut file = File::open(path)?;
@@ -24,9 +23,40 @@ use std::fs;
 // }
 
 // 1.2 读取文件为 `Vec<u8>`
-fn main() -> io::Result<()> {
-    let content = fs::read("src/duolingo.jpeg")?;
-    println!("文件内容:\n{:?}", content);
-    Ok(())
-}
+// fn main() -> io::Result<()> {
+//     let content = fs::read("src/duolingo.jpeg")?;
+//     println!("文件内容:\n{:?}", content);
+//     Ok(())
+// }
 
+// 1.3 逐行读取文件
+// use std::fs::File;
+// use std::io::{self, BufRead};
+// fn main() -> io::Result<()> {
+//     let file = File::open("src/test.txt")?;
+//     let reader = io::BufReader::new(file);
+//     for line in reader.lines() {
+//         println!("{}", line?);
+//     }
+//     Ok(())
+// }
+
+// 2. 写入文件
+// 2.1 覆盖写入
+// use std::fs;
+// fn main() -> std::io::Result<()> {
+//     fs::write("src/test.txt", "Hello, world!")?;
+//     println!("文件写入成功");
+//     Ok(())
+// }
+
+// 2.2 逐步写入
+// use std::fs::File;
+// use std::io::Write;
+// fn main() -> std::io::Result<()> {
+//     let mut file = File::create("src/test.txt")?;
+//     file.write_all(b"Hello! Rust")?;
+//     file.write_all("第二行内容".as_bytes())?;
+//     println!("文件写入成功");
+//     Ok(())
+// }
