@@ -62,15 +62,46 @@
 // }
 
 // 2.3 追加写入
-use std::fs::OpenOptions;
-use std::io::Write;
+// use std::fs::OpenOptions;
+// use std::io::Write;
+// fn main() -> std::io::Result<()> {
+//     let mut file = OpenOptions::new()
+//         .write(true)
+//         .append(true)
+//         .open("src/test.txt")?;
+//     file.write_all(b"Hello, Beatles!")?;
+//     println!("文件写入成功");
+//     Ok(())
+// }
 
+// 3. 文件与目录操作
+// 3.1 创建目录
+// use std::fs;
+// fn main() -> std::io::Result<()> {
+//     fs::create_dir("src/sub_dir")?;
+//     Ok(())
+// }
+
+// 3.2 递归创建目录
+// use std::fs;
+// fn main() -> std::io::Result<()> {
+//     fs::create_dir_all("src/sub_dir/sub_sub_dir")?;
+//     Ok(())
+// }
+
+// 3.3 删除目录
+// use std::fs;
+// fn main() -> std::io::Result<()> {
+//     fs::remove_dir("src/sub_dir")?;
+//     Ok(())
+// }
+
+// 5. 遍历目录
+use std::fs;
 fn main() -> std::io::Result<()> {
-    let mut file = OpenOptions::new()
-        .write(true)
-        .append(true)
-        .open("src/test.txt")?;
-    file.write_all(b"Hello, Beatles!")?;
-    println!("文件写入成功");
+    for entry in fs::read_dir(".")? {
+        let entry = entry?;
+        println!("{:?}", entry.path().display());
+    }
     Ok(())
 }
