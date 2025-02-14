@@ -1,5 +1,3 @@
-
-
 // fn read_file_content(path: &str) -> io::Result<String> {
 //     let mut file = File::open(path)?;
 //     let mut contents = String::new();
@@ -30,11 +28,11 @@
 // }
 
 // 1.3 逐行读取文件
+// use std::io::{self, BufRead, BufReader};
 // use std::fs::File;
-// use std::io::{self, BufRead};
 // fn main() -> io::Result<()> {
 //     let file = File::open("src/test.txt")?;
-//     let reader = io::BufReader::new(file);
+//     let reader = BufReader::new(file);
 //     for line in reader.lines() {
 //         println!("{}", line?);
 //     }
@@ -64,13 +62,14 @@
 // 2.3 追加写入
 // use std::fs::OpenOptions;
 // use std::io::Write;
+
 // fn main() -> std::io::Result<()> {
 //     let mut file = OpenOptions::new()
 //         .write(true)
-//         .append(true)
+//         .append(true) // 追加模式
 //         .open("src/test.txt")?;
-//     file.write_all(b"Hello, Beatles!")?;
-//     println!("文件写入成功");
+
+//     file.write_all(b"hell_world!\n")?;
 //     Ok(())
 // }
 
@@ -97,11 +96,13 @@
 // }
 
 // 5. 遍历目录
-use std::fs;
-fn main() -> std::io::Result<()> {
-    for entry in fs::read_dir(".")? {
-        let entry = entry?;
-        println!("{:?}", entry.path().display());
-    }
-    Ok(())
-}
+// use std::fs;
+// fn main() -> std::io::Result<()> {
+//     for entry in fs::read_dir(".")? {
+//         let entry = entry?;
+//         println!("{:?}", entry.path().display());
+//     }
+//     Ok(())
+// }
+
+
